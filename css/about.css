@@ -62,31 +62,36 @@ html,
     text-align: center;
     margin-top: 30px;
 }
-.logo {
+.photo {
+    margin-top: 60px;
+    text-align: center;
+}
+.photo img {
+    width: 300px;
+}
+.about {
     display: flex;
-    flex-direction: column;
+    justify-content: center;
 }
-.logo img{
-    width: 80%;
-    margin: 60px auto 20px auto;
-}
-.text {
-    display: flex;
-}
-.text h2{
-    font-family: 'Signika', sans-serif;
-    font-weight: 200;
-    color: white;
-    font-size: 70px;
-    margin-top: 3%;
-    margin-left: 15%;
-}
-.text h6{
-    position: absolute;
+#text {
     font-family: 'Signika', sans-serif;
     font-weight: 200;
     color: white;
     font-size: 20px;
-    margin-left: 15%;
-    margin-top: 12%;
+    margin-top: 5%;
+    height: 50px;
+    width: 600px;
+    display: -webkit-box;
+    display: -moz-box;
+    /* white-space: pre-wrap; */
+    word-wrap: break-word;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+}
+.open {
+    color: #6a6a6a;
+    font-size: 15px;
+    margin-top: 7%;
 }

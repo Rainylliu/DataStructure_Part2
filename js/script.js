@@ -1,4 +1,6 @@
+//Define a function that performs linear interpolation between two values based on the third value lerp.
 const lerp = (f0, f1, t)  => (1 - t) * f0 + t * f1;
+//Various properties related to mouse
 const mouse ={
     newX: 0,
     newY: 0,
@@ -9,23 +11,24 @@ const mouse ={
     width: 0,
     height: 0
 };
-
+//Selects the class'cursor' from HTML and assigns it to variable value'$cursor'
 const $cursor = document.querySelector('.cursor');
+//Selects the class'data-link' and stores them in the 'links'.
 const links = document.querySelectorAll('[data-link]');
-
+//Make the cursor follow user input according to mouse move and touch by mouse.x and mouse.y.
 const handleMouse = (e) => {
 if (!mouse.hover) {
     mouse.x = e.clientX || e.touches[0].clientX;
     mouse.y = e.clientY || e.touches[0].clientY;
 }
 }
-
+//Add event listeners to the window object to track mouse movement and touch events and call the handleMouse function accordingly.
 window.addEventListener("mousemove", handleMouse);
 window.addEventListener("touchmove", handleMouse);
 window.addEventListener("touchstart", handleMouse);
-
+//Declares a variable'timer'
 let timer;
-
+//These event listeners manage cursor interactions when the mouse hover or leave each element.
 links.forEach((link) => {
 link.addEventListener("mouseenter", () => {
     clearTimeout(timer);
@@ -90,3 +93,29 @@ var text = document.getElementById('text')
 function handleOpen() {
     text.style.overflow = 'visible'
 }
+//Selects the ID "card_"
+function flipCard(cardId) {
+const select = document.getElementById('card_' + cardId);
+//Seletcts the ID "cover_" as the cover of card_
+const front = select.querySelector('.cover_' + cardId);
+//Seletcts the ID "back_" as the back of card_
+const back = select.querySelector('.back_' + cardId);
+
+//Attaches a "mouseover" event listener to the "card_" 
+select.addEventListener('mouseover', function () {
+    front.style.transform = 'rotateY(180deg)';
+    back.style.transform = 'rotateY(0deg)';
+});
+//Attaches a "mouseleave" event listener to the "card_" 
+select.addEventListener('mouseleave', function () {
+    front.style.transform = 'rotateY(0deg)';
+    back.style.transform = 'rotateY(180deg)';
+});
+}
+
+flipCard(1);
+flipCard(2);
+flipCard(3);
+flipCard(4);
+flipCard(5);
+flipCard(6);

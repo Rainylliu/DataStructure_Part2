@@ -81,20 +81,38 @@ function describeHabit(habitTitle) {
 console.log(dogInfo(dogCOCO));
 console.log("COCO has " + describeCharacteristics(characteristicCOCO));
 
-const storyTitle_1 = "troublemaker";
-const storyTitle_2 = "pickUpFromSchool";
-const storyTitle_3 = "ballLover";
-const storyTitle_4 = "cleverPuppy";
+function flipCard(cardId, type, COCOStories, COCOHabits) {
+    const select = document.getElementById('card' + cardId);
+    const front = select.querySelector('.cover_' + cardId);
+    const back = select.querySelector('.back_' + cardId);
+    const content = type === 'story' ? COCOStories : COCOHabits;
+    
+    const cardContent = content[type][cardId];
+    let contentToShow;
 
-console.log(getStoryByTitle(storyTitle_1));
-console.log(getStoryByTitle(storyTitle_2));
-console.log(getStoryByTitle(storyTitle_3));
-console.log(getStoryByTitle(storyTitle_4));
+    if (type === 'story') {
+        contentToShow = content[cardContent];
+    } else if (type === 'habit') {
+        contentToShow = content[cardContent];
+    } 
 
-const habitTitle_1 = "smilingAngel";
-const habitTitle_2 = "strangeSleeping";
-const habitTitle_3 = "cleanlinessLover";
+    front.textContent = contentToShow.front;
+    back.textContent = contentToShow.back;
 
-console.log(describeHabit(habitTitle_1));
-console.log(describeHabit(habitTitle_2));
-console.log(describeHabit(habitTitle_3));
+    select.addEventListener('mouseover', function () {
+        front.style.transform = 'rotateY(180deg)';
+        back.style.transform = 'rotateY(0deg)';
+    });
+    
+    select.addEventListener('mouseleave', function () {
+        front.style.transform = 'rotateY(0deg)';
+        back.style.transform = 'rotateY(180deg)';
+    });
+}
+
+flipCard(1, 'story', COCOStories, COCOHabits);
+flipCard(2, 'story', COCOStories, COCOHabits);
+flipCard(3, 'story', COCOStories, COCOHabits);
+flipCard(4, 'habit', COCOStories, COCOHabits);
+flipCard(5, 'habit', COCOStories, COCOHabits);
+flipCard(6, 'habit', COCOStories, COCOHabits);
